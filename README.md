@@ -63,34 +63,33 @@ npm run start
 
 # Database Setup and Management
 
-This project utilizes [Sequelize](https://sequelize.org/) as an ORM for database management. Follow the instructions below to set up, migrate, and seed the database.
+This project utilizes [Drizzle ORM](https://orm.drizzle.team/) as an ORM for database management. Follow the instructions below to set up, migrate, and seed the database.
 
-1. **Prerequisites:**
+1. **Prerequisites:**  
    Ensure you have the necessary environment variables configured for database access.
 
    ```bash
    cp .env.example .env.local
    ```
 
-2. **Create the database:**
-   If the database does not exist yet, run:
+2. **Create the database:**  
+   To create the datatbse if not present, run:
 
    ```bash
-   npx sequelize-cli db:create --env production
+   npm run db:create
    ```
 
-3. **Running the migrations:**
+3. **Running the migrations:**  
    To apply all pending migrations and set up the initial database schema, run:
 
    ```bash
-   npx sequelize-cli db:migrate --env production
+   npx drizzle-kit migrate
    ```
 
-4. **Seeding the database:**
-   To populate the database with seed data, use:
+   If the migrations are not present, run the following first:
 
    ```bash
-   npx sequelize-cli db:seed:all
+   npx drizzle-kit generate
    ```
 
 ## Technologies Used
@@ -99,9 +98,7 @@ This project utilizes [Sequelize](https://sequelize.org/) as an ORM for database
 - [NextUI](https://nextui.org/)
 - [NextAuth.js](https://next-auth.js.org/)
 - [uploadthing](https://uploadthing.com/)
-- [Sequelize](https://sequelize.org/)
-- [react-globe.gl](https://github.com/vasturiano/react-globe.gl)
-- [Recharts](https://recharts.org/)
+- [Drizzle ORM](https://orm.drizzle.team/)
 
 ## License
 
