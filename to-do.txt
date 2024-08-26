@@ -1,0 +1,6 @@
+DB Setup
+Backend setup
+UploadThing
+API setup
+
+AI Chat wise
