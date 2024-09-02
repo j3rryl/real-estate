@@ -92,6 +92,13 @@ This project utilizes [Drizzle ORM](https://orm.drizzle.team/) as an ORM for dat
    npx drizzle-kit generate
    ```
 
+4. **Seed the database:**  
+   To populate the database with seed data, run:
+
+   ```bash
+   npm run db:seed
+   ```
+
 ## Technologies Used
 
 - [Next.js](https://nextjs.org/)
