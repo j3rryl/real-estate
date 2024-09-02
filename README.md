@@ -29,7 +29,7 @@ To get started with the project, follow these steps to set it up locally:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://jmunr0e@bitbucket.org/jmunro3/alive.git
+   git clone https://github.com/j3rryl/real-estate.git
    cd alive
    ```
 
@@ -73,7 +73,7 @@ This project utilizes [Drizzle ORM](https://orm.drizzle.team/) as an ORM for dat
    ```
 
 2. **Create the database:**  
-   To create the datatbse if not present, run:
+   To create the datatbase if not present, run:
 
    ```bash
    npm run db:create
