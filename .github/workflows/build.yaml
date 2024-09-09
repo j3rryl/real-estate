@@ -1,4 +1,8 @@
-on: push
+name: Sample deployment
+on:
+  push:
+    branches:
+      - master
 jobs:
   first-job:
     runs-on: windows-latest
