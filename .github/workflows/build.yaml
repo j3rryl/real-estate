@@ -2,7 +2,7 @@ name: Sample deployment
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   first-job:
     runs-on: windows-latest
