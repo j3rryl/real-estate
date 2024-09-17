@@ -50,9 +50,9 @@ export default function ChatComponent() {
   };
 
   return (
-    <Card className="w-full rounded-none p-5 h-full !mx-0">
-      <CardContent className="h-4/5">
-        <ScrollArea className="h-full pr-3">
+    <Card className="w-full rounded-none p-5 !h-full !mx-0">
+      <CardContent className="!h-4/5">
+        <ScrollArea className="!h-full min-h-full pr-3">
           {messages.map((message) => (
             <div
               key={message.id}
