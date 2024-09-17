@@ -2,10 +2,10 @@
 import { useState } from "react";
 import {
   Bell,
+  House,
   LayoutDashboard,
   Menu,
   MessageSquareMoreIcon,
-  Settings,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -23,7 +23,7 @@ export default function AdminDashboard({
   const navItems = [
     { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/chat", label: "Chat", icon: MessageSquareMoreIcon },
-    // { href: "/settingsz", label: "Settings", icon: Settings },
+    { href: "/properties", label: "Properties", icon: House },
   ];
   return (
     <div className="flex h-screen bg-gray-100">
@@ -33,7 +33,7 @@ export default function AdminDashboard({
           isMobileMenuOpen ? "block" : "hidden"
         } md:block`}
       >
-        <div className="p-4">
+        <div className="p-4 border-b">
           <h2 className="text-2xl font-semibold text-gray-800">Panel</h2>
         </div>
         <nav className="flex-grow">
@@ -45,7 +45,9 @@ export default function AdminDashboard({
                   <Button
                     variant={isActive ? "secondary" : "ghost"}
                     className={`w-full justify-start my-2 mx-2 text-base ${
-                      isActive ? "bg-secondary" : ""
+                      isActive
+                        ? "bg-primary text-white hover:bg-primary hover:text-white"
+                        : ""
                     }`}
                     asChild
                   >
