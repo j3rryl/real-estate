@@ -23,7 +23,7 @@ export default function AdminDashboard({
   const navItems = [
     { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/chat", label: "Chat", icon: MessageSquareMoreIcon },
-    // { href: "/settings", label: "Settings", icon: Settings },
+    // { href: "/settingsz", label: "Settings", icon: Settings },
   ];
   return (
     <div className="flex h-screen bg-gray-100">
