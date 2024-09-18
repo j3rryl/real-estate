@@ -22,9 +22,9 @@ const PropertyCard = ({ propertyModel }: { propertyModel: PropertyModel }) => {
           {truncateText(propertyModel.description!)}
         </p>
       </CardContent>
-      <CardFooter className="flex justify-between items-center">
-        <Button>View</Button>
-        <Button>Buy</Button>
+      <CardFooter className="flex justify-between items-center gap-2">
+        <Button className="w-full">View</Button>
+        <Button className="w-full">Buy</Button>
       </CardFooter>
     </Card>
   );
