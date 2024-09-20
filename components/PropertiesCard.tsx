@@ -15,8 +15,8 @@ const PropertiesCard = async () => {
   const getProperties = await db.select().from(properties).limit(20);
 
   return (
-    <>
-      <div className="gap-2 grid grid-cols-2 md:grid-cols-3">
+    <div className="h-full">
+      <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {getProperties.map((property) => {
           return <PropertyCard key={property.id} propertyModel={property} />;
         })}
@@ -24,20 +24,31 @@ const PropertiesCard = async () => {
       <Pagination>
         <PaginationContent>
           <PaginationItem>
-            <PaginationPrevious href="#" />
+            <PaginationPrevious
+              href="#"
+              className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground"
+            />
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
+            <PaginationLink
+              href="#"
+              className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground"
+            >
+              1
+            </PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            <PaginationEllipsis />
+            <PaginationEllipsis className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground" />
           </PaginationItem>
           <PaginationItem>
-            <PaginationNext href="#" />
+            <PaginationNext
+              href="#"
+              className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground"
+            />
           </PaginationItem>
         </PaginationContent>
       </Pagination>
-    </>
+    </div>
   );
 };
 
