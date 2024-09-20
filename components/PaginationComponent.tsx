@@ -45,7 +45,7 @@ const PaginationComponent: React.FC<PaginationProps> = ({
       <PaginationItem>
         <PaginationEllipsis
           onClick={() => onPageChange(currentPage - 3)}
-          className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground"
+          className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground rounded-sm"
         />
       </PaginationItem>
     );
@@ -73,7 +73,7 @@ const PaginationComponent: React.FC<PaginationProps> = ({
       <PaginationItem>
         <PaginationEllipsis
           onClick={() => onPageChange(currentPage < 6 ? 7 : currentPage + 3)}
-          className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground"
+          className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground rounded-sm"
         />
       </PaginationItem>
     );
