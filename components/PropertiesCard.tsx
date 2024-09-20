@@ -36,7 +36,7 @@ const PropertiesCard = () => {
           </div>
           <PaginationComponent
             totalPages={data?.pages ?? 0}
-            currentPage={page}
+            currentPage={data?.currentPage ?? 1}
             onPageChange={setPage}
           />
         </>

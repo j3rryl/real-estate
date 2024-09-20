@@ -55,6 +55,7 @@ export const imagesRelations = relations(propertyImages, ({ one }) => ({
 interface PaginatedResponse<T> {
   data: T[];
   pages: number;
+  currentPage: number;
   count: number;
 }
 

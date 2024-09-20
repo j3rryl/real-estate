@@ -8,7 +8,6 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const page = Number(searchParams.get("page")) || 1;
   const pageSize = Number(searchParams.get("pageSize")) || 10;
-
   // const headersList = headers();
   // const ip = headersList.get("x-forwarded-for");
   // console.log("User ip is ", ip);

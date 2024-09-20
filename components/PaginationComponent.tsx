@@ -25,7 +25,7 @@ const PaginationComponent: React.FC<PaginationProps> = ({
   const showMiddlePages = currentPage >= 4 && currentPage <= totalPages - 3;
 
   // Add first three pages
-  for (let i = currentPage; i <= currentPage + 2 && i <= totalPages; i++) {
+  for (let i = 1; i <= (currentPage >= 6 ? 2 : 6); i++) {
     pageItems.push(
       <PaginationItem key={i}>
         <PaginationLink
@@ -39,26 +39,26 @@ const PaginationComponent: React.FC<PaginationProps> = ({
     );
   }
 
-  // Add ellipsis before middle pages
-  if (totalPages > 6 && currentPage + 3 < totalPages) {
+  // Add ellipsis after start pages
+  if (currentPage > 6) {
     pageItems.push(
       <PaginationItem>
         <PaginationEllipsis
-          onClick={() => onPageChange(currentPage + 3)}
+          onClick={() => onPageChange(currentPage - 3)}
           className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground"
         />
       </PaginationItem>
     );
   }
 
-  // Add last three pages
-  if (currentPage + 3 < totalPages) {
-    for (let i = Math.max(4, totalPages - 2); i <= totalPages; i++) {
+  // Add middle pages
+  if (currentPage >= 6 && currentPage + 3 < totalPages) {
+    for (let i = currentPage; i <= currentPage + 2 && i <= totalPages; i++) {
       pageItems.push(
         <PaginationItem key={i}>
           <PaginationLink
-            href="#"
             onClick={() => onPageChange(i)}
+            href="#"
             className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground"
           >
             {i}
@@ -67,24 +67,54 @@ const PaginationComponent: React.FC<PaginationProps> = ({
       );
     }
   }
+  // Add ellipsis before end pages
+  if (totalPages > 6 && currentPage + 3 < totalPages) {
+    pageItems.push(
+      <PaginationItem>
+        <PaginationEllipsis
+          onClick={() => onPageChange(currentPage < 6 ? 7 : currentPage + 3)}
+          className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground"
+        />
+      </PaginationItem>
+    );
+  }
+
+  // Add last three pages
+  for (let i = Math.max(4, totalPages - 2); i <= totalPages; i++) {
+    pageItems.push(
+      <PaginationItem key={i}>
+        <PaginationLink
+          href="#"
+          onClick={() => onPageChange(i)}
+          className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground"
+        >
+          {i}
+        </PaginationLink>
+      </PaginationItem>
+    );
+  }
 
   return (
     <Pagination className="!my-5">
-      <PaginationItem className="!list-none">
-        <PaginationPrevious
-          onClick={() => onPageChange(currentPage - 1)}
-          href="#"
-          className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground mx-2"
-        />
-      </PaginationItem>
+      {currentPage > 1 && (
+        <PaginationItem className="!list-none">
+          <PaginationPrevious
+            onClick={() => onPageChange(currentPage - 1)}
+            href="#"
+            className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground mx-2"
+          />
+        </PaginationItem>
+      )}
       <PaginationContent>{pageItems}</PaginationContent>
-      <PaginationItem className="!list-none">
-        <PaginationNext
-          onClick={() => onPageChange(currentPage + 1)}
-          href="#"
-          className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground mx-2"
-        />
-      </PaginationItem>
+      {currentPage != totalPages && (
+        <PaginationItem className="!list-none">
+          <PaginationNext
+            onClick={() => onPageChange(currentPage + 1)}
+            href="#"
+            className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground mx-2"
+          />
+        </PaginationItem>
+      )}
     </Pagination>
   );
 };
