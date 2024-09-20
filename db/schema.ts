@@ -52,5 +52,13 @@ export const imagesRelations = relations(propertyImages, ({ one }) => ({
   }),
 }));
 
+interface PaginatedResponse<T> {
+  data: T[];
+  pages: number;
+  count: number;
+}
+
 export type PropertyModel = typeof properties.$inferSelect;
 export type PropertyImageModel = typeof propertyImages.$inferSelect;
+
+export type PropertyPaginatedResponse = PaginatedResponse<PropertyModel>;

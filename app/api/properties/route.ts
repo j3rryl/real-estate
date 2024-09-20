@@ -24,7 +24,12 @@ export async function GET(request: NextRequest) {
   const pages = Math.round(propertiesCount / pageSize);
 
   return Response.json(
-    { data: getProperties, count: propertiesCount, pages: pages },
+    {
+      data: getProperties,
+      count: propertiesCount,
+      pages: pages,
+      currentPage: page,
+    },
     { status: 200 }
   );
 }
