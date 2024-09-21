@@ -31,7 +31,11 @@ const PaginationComponent: React.FC<PaginationProps> = ({
         <PaginationLink
           onClick={() => onPageChange(i)}
           href="#"
-          className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground"
+          className={`${
+            currentPage == i
+              ? "bg-white text-primary shadow"
+              : "bg-primary text-primary-foreground shadow"
+          } hover:bg-primary/90 hover:text-primary-foreground`}
         >
           {i}
         </PaginationLink>
@@ -59,7 +63,11 @@ const PaginationComponent: React.FC<PaginationProps> = ({
           <PaginationLink
             onClick={() => onPageChange(i)}
             href="#"
-            className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground"
+            className={`${
+              currentPage == i
+                ? "bg-white text-primary shadow"
+                : "bg-primary text-primary-foreground shadow"
+            } hover:bg-primary/90 hover:text-primary-foreground`}
           >
             {i}
           </PaginationLink>
@@ -86,7 +94,11 @@ const PaginationComponent: React.FC<PaginationProps> = ({
         <PaginationLink
           href="#"
           onClick={() => onPageChange(i)}
-          className="bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground"
+          className={`${
+            currentPage == i
+              ? "bg-white text-primary shadow"
+              : "bg-primary text-primary-foreground shadow"
+          } hover:bg-primary/90 hover:text-primary-foreground`}
         >
           {i}
         </PaginationLink>
