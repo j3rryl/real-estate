@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { fetcher } from "@/lib/helper";
 import useSWR from "swr";
 import PaginationComponent from "./PaginationComponent";
+import CardSkeleton from "./CardSkeleton";
 
 const PropertiesCard = () => {
   const [page, setPage] = useState<number>(1);
@@ -24,7 +25,11 @@ const PropertiesCard = () => {
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {[1, 2, 3, 4].map((loader) => {
+            return <CardSkeleton key={loader} />;
+          })}
+        </div>
       ) : (
         <>
           <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
