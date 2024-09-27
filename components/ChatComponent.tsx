@@ -1,6 +1,5 @@
 "use client";
 import { useChat } from "ai/react";
-import { useState } from "react";
 import { Send } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -8,47 +7,15 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-type Message = {
-  id: number;
-  text: string;
-  sender: "user" | "bot";
-};
-
 export default function ChatComponent() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
-
-  // const [messages, setMessages] = useState<Message[]>([
-  //   { id: 1, text: "Hello! How can I help you today?", sender: "bot" },
-  // ]);
-  const [newMessage, setNewMessage] = useState("");
-
-  const handleSendMessage = () => {
-    if (newMessage.trim() === "") return;
-
-    const userMessage: Message = {
-      id: messages.length + 1,
-      text: newMessage,
-      sender: "user",
-    };
-
-    // setMessages([...messages, userMessage]);
-    setNewMessage("");
-
-    // Simulate bot response
-    // setTimeout(() => {
-    //   const botMessage: Message = {
-    //     id: messages.length + 2,
-    //     text: "Thank you for your message. I'm processing your request.",
-    //     sender: "bot",
-    //   };
-    //   setMessages((prevMessages) => [...prevMessages, botMessage]);
-    // }, 1000);
-  };
 
   return (
     <Card className="w-full rounded-none p-5 !h-full !mx-0">
       <CardContent className="!h-4/5">
         <ScrollArea className="!h-full min-h-full pr-3">
+          {/* {data && <pre>{JSON.stringify(data, null, 2)}</pre>} */}
+
           {messages.map((message) => (
             <div
               key={message.id}
