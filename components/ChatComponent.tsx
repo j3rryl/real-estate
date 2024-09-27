@@ -1,16 +1,10 @@
 "use client";
-
+import { useChat } from "ai/react";
 import { useState } from "react";
 import { Send } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -21,9 +15,11 @@ type Message = {
 };
 
 export default function ChatComponent() {
-  const [messages, setMessages] = useState<Message[]>([
-    { id: 1, text: "Hello! How can I help you today?", sender: "bot" },
-  ]);
+  const { messages, input, handleInputChange, handleSubmit } = useChat();
+
+  // const [messages, setMessages] = useState<Message[]>([
+  //   { id: 1, text: "Hello! How can I help you today?", sender: "bot" },
+  // ]);
   const [newMessage, setNewMessage] = useState("");
 
   const handleSendMessage = () => {
@@ -35,18 +31,18 @@ export default function ChatComponent() {
       sender: "user",
     };
 
-    setMessages([...messages, userMessage]);
+    // setMessages([...messages, userMessage]);
     setNewMessage("");
 
     // Simulate bot response
-    setTimeout(() => {
-      const botMessage: Message = {
-        id: messages.length + 2,
-        text: "Thank you for your message. I'm processing your request.",
-        sender: "bot",
-      };
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
-    }, 1000);
+    // setTimeout(() => {
+    //   const botMessage: Message = {
+    //     id: messages.length + 2,
+    //     text: "Thank you for your message. I'm processing your request.",
+    //     sender: "bot",
+    //   };
+    //   setMessages((prevMessages) => [...prevMessages, botMessage]);
+    // }, 1000);
   };
 
   return (
@@ -57,21 +53,21 @@ export default function ChatComponent() {
             <div
               key={message.id}
               className={`flex ${
-                message.sender === "user" ? "justify-end" : "justify-start"
+                message.role === "user" ? "justify-end" : "justify-start"
               } mb-4`}
             >
               <div
                 className={`flex items-start ${
-                  message.sender === "user" ? "flex-row-reverse" : "flex-row"
+                  message.role === "user" ? "flex-row-reverse" : "flex-row"
                 }`}
               >
                 <Avatar className="w-8 h-8">
                   <AvatarFallback>
-                    {message.sender === "user" ? "U" : "B"}
+                    {message.role === "user" ? "U" : "B"}
                   </AvatarFallback>
                   <AvatarImage
                     src={
-                      message.sender === "user"
+                      message.role === "user"
                         ? "/placeholder.svg?height=32&width=32"
                         : "/placeholder.svg?height=32&width=32"
                     }
@@ -79,12 +75,12 @@ export default function ChatComponent() {
                 </Avatar>
                 <div
                   className={`mx-2 p-3 rounded-lg ${
-                    message.sender === "user"
+                    message.role === "user"
                       ? "bg-primary text-primary-foreground"
                       : "bg-secondary text-secondary-foreground"
                   }`}
                 >
-                  {message.text}
+                  {message.content}
                 </div>
               </div>
             </div>
@@ -93,17 +89,14 @@ export default function ChatComponent() {
       </CardContent>
       <CardFooter>
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSendMessage();
-          }}
+          onSubmit={handleSubmit}
           className="flex w-full items-center space-x-2"
         >
           <Input
             type="text"
             placeholder="Type your message..."
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
+            value={input}
+            onChange={handleInputChange}
             className="flex-grow"
           />
           <Button type="submit" size="icon">
