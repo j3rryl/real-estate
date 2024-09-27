@@ -24,6 +24,7 @@ export default function AdminDashboard({
     { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/chat", label: "Chat", icon: MessageSquareMoreIcon },
     { href: "/properties", label: "Properties", icon: House },
+    { href: "/property-chat", label: "Property Chat", icon: House },
   ];
   return (
     <div className="flex h-screen bg-gray-100">
