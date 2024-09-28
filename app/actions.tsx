@@ -5,6 +5,8 @@ import { openai } from "@ai-sdk/openai";
 import { z } from "zod";
 import { ReactNode } from "react";
 import { generateId } from "ai";
+import CardSkeleton from "@/components/CardSkeleton";
+import PropertiesCard from "@/components/PropertiesCard";
 
 export interface ServerMessage {
   role: "user" | "assistant";
@@ -18,7 +20,7 @@ export interface ClientMessage {
 }
 
 const LoadingComponent = () => (
-  <div className="animate-pulse p-4">getting weather...</div>
+  <div className="animate-pulse p-4">Hang on...</div>
 );
 
 const getWeather = async (location: string) => {
@@ -67,6 +69,14 @@ export async function continueConversation(
           yield <LoadingComponent />;
           const weather = await getWeather(location);
           return <WeatherComponent weather={weather} location={location} />;
+        },
+      },
+      getProperties: {
+        description: "Get real estate properties",
+        parameters: z.object({}),
+        generate: async function* () {
+          yield <LoadingComponent />;
+          return <PropertiesCard />;
         },
       },
       showStockInformation: {
